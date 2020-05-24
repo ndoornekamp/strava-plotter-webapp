@@ -1,0 +1,9 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+<h1>Result</h1>
+
+{% for activity_type, amount in types.items %}
+    {{ activity_type }} - {{ amount }} <br>
+{% endfor %}
+
+<a href="http://127.0.0.1:8000/result">Plot</a>
