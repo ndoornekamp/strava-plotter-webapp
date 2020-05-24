@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+{% load static %}
+
+<head>
+    <style>
+    body { 
+        background: url('{% static "webapp/background.jpg" %}') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    header {
+        background-color: rgb(41, 41, 41);
+        padding: 10px;
+        text-align: center;
+        color: white;
+        position: fixed;
+        top: 0;
+        width:100%;
+    }
+    </style>
+</head>
+
+<body>
+    <header>
+        How it works | Github
+    </header>
+
+
+    <div class="container text-center" style="
+        background-color:#ffffff9c;
+        display: inline-block;
+        position: fixed;
+        top: 0;
+        bottom: 33%;
+        left: 0;
+        right: 0;
+        width: 400px;
+        height: 100px;
+        margin: auto;">
+
+        <h1>Homepage</h1>
+        <a href="https://www.strava.com/oauth/authorize?client_id=36057&redirect_uri=http://127.0.0.1:8000/exchange_code&response_type=code&approval_prompt=auto&scope=activity:read">Authorise</a>
+        
+    </div>
+</body>
