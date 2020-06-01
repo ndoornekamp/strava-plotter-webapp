@@ -1,5 +1,30 @@
-<h1>Result</h1>
+{% extends "base.html" %}
 
-{{ image }}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+{% load static %}
 
-<img src="/media/output.png" width="100" height="80" alt="My Pic">
+{% block content %}
+    <style>
+        .image {
+            max-width:35%; 
+            max-height:100vh; 
+            margin:auto;
+        }
+    </style>
+
+    {% for image in images%}       
+        <div style="display:grid; margin:1%;">
+            <a href="#" onclick="open_img_in_new_tab (this)">
+                <img class="image" src="data:image/png;base64, {{ image }}"/>
+            </a>
+        </div>
+        
+    {% endfor %}
+
+    <script>
+        function open_img_in_new_tab(element) { 
+            var newTab = window.open();
+            setTimeout(function(){newTab.document.body.innerHTML = element.innerHTML;},50); 
+        }
+    </script>
+{% endblock %}

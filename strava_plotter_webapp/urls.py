@@ -23,6 +23,6 @@ from webapp.views import home, result, plotter_settings
 urlpatterns = [
     # url(r'^admin/', admin.site.urls),
     url('exchange_code', plotter_settings),
-    url('result', result),
+    url('result', result, name='result'),
     url('', home),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

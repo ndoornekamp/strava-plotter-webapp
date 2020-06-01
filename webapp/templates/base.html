@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+{% load static %}
+
+<head>
+    <style>
+    body { 
+        background: url('{% static "webapp/background.jpg" %}') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    header {
+        background-color: rgb(41, 41, 41);
+        padding: 10px;
+        text-align: center;
+        color: white;
+        position: fixed;
+        top: 0;
+        width:100%;
+    }
+
+    a {
+        color: white;
+    }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="https://medium.com/@nddoornekamp/plotting-strava-data-with-python-7aaf0cf0a9c3">How it works</a> | <a href="https://github.com/ndoornekamp/strava-plotter-webapp">GitHub</a>
+    </header>
+
+    <div style="display:flex;">
+        <div class="container text-center" style="background-color:#ffffff9c; display:inline-block; position:relative; top:100px; margin:auto;">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+</body>

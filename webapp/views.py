@@ -18,13 +18,9 @@ def home(request):
 def plotter_settings(request):
     request.session['rides'] = get_rides_from_strava(authorisation_code=request.GET['code'])
 
-    print(request.session['rides'])
-    print(len(request.session['rides']))
-
     types = Counter([ride['type'] for ride in request.session['rides']])
 
     context = {
-        "nof_activities": len(request.session['rides']),
         "types": dict(types)
     }
 
@@ -32,4 +28,26 @@ def plotter_settings(request):
 
 
 def result(request):
-    return FileResponse(open('media/output.png', 'rb'))
+
+    params = {}
+    params_from_form = dict(request.GET)
+    
+    # Hardcoded settings
+    params["first_cluster_only"] = False
+    params["output_format"] = "bytes"
+    params["subplots_in_separate_files"] = True
+
+    # Settings from form
+    params["clustered"] = params_from_form.pop("clustered", [""])[0] == "on"
+    params["margin"] = float(params_from_form.pop("margin")[0])
+    params["ids_to_skip"] = [id_to_skip.strip() for id_to_skip in params_from_form.pop("ids_to_skip")[0].split(";") if id_to_skip != '']
+    params["alpha"] = float(params_from_form.pop("opacity")[0])/100
+    params["activity_types"] = [activity_type for activity_type in params_from_form if params_from_form[activity_type] == ['on']]      
+
+    print(params)
+
+    rides = parse_rides(request.session['rides'], params)
+    rides = cluster_rides(rides, params)
+    images_base64 = plot_rides(rides, params)
+
+    return render(request, 'result.html', {'images': images_base64})
