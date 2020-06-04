@@ -6,15 +6,14 @@
 {% block content %}
     <style>
         .image {
-            max-width:35%; 
-            max-height:100vh; 
+            max-width:65%; 
             margin:auto;
         }
     </style>
 
     {% for image in images%}       
-        <div style="display:grid; margin:1%;">
-            <a href="#" onclick="open_img_in_new_tab (this)">
+        <div style="display:grid; margin:2%;">
+            <a href="#" onclick="open_img_in_new_tab(this)">
                 <img class="image" src="data:image/png;base64, {{ image }}"/>
             </a>
         </div>

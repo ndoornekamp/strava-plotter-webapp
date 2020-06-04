@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 {% load static %}
 
 {% block content %}
     <form action="{% url 'result' %}">
-        <div style="display:inline-block; width:45%; margin:2%;"> Activity types:<br>
+        <div style="display:inline-block; width:45%; margin:2%;"> 
+            <img src="{% static 'webapp/tooltip.png' %}" height="15px" data-toggle="tooltip" title="Check the activity types that you wish to include in the plots">
+            Activity types:<br>
             {% for activity_type, amount in types.items %}
                 <div>
                     <label for="{{ activity_type }}">{{ activity_type }} ({{ amount }})</label>
@@ -16,8 +20,15 @@
         
         <div style="display:inline-block; width:45%; margin:2%;">
             <div>
+                <img src="{% static 'webapp/tooltip.png' %}" height="15px" data-toggle="tooltip" title="When checked, the algorithm will try to identify clusters of rides that are close to eachother and plot them in separate images">
+                <label for="clustered">Cluster rides</label>
+                <input type="checkbox" id="clustered" name="clustered" checked>
+            </div>
+            <div>
+                <img src="{% static 'webapp/tooltip.png' %}" height="15px" data-toggle="tooltip" title="Maximum distance between rides in degrees (latitude/longitude) above which rides are placed in separate clusters">
                 <label for="margin">Margin</label>
                 <select name="margin">
+                    <option value="0">0</option>
                     <option value="0.05">0.05</option>
                     <option value="0.1" selected>0.1</option>
                     <option value="0.2">0.2</option>
@@ -27,14 +38,12 @@
                 </select>
             </div>
             <div>
-                <label for="clustered">Cluster rides</label>
-                <input type="checkbox" id="clustered" name="clustered" checked>
-            </div>
-            <div>
+                <img src="{% static 'webapp/tooltip.png' %}" height="15px" data-toggle="tooltip" title="Activity ID's you want to exclude. These ID's can be found by opening the activity you wish to exclude on strava.com - the URL then end in the ID of that activity.">
                 <label for="ids_to_skip">ID's to skip</label>
-                <input type="text" id="ids_to_skip" name="ids_to_skip">
+                <input type="text" id="ids_to_skip" name="ids_to_skip" value="621131153">
             </div>
             <div>
+                <img src="{% static 'webapp/tooltip.png' %}" height="15px" data-toggle="tooltip" title="Opacity of the GPS tracks on top of the background image. When smaller than 100, overlapping tracks light up more than tracks you only traveled once.">
                 <label for="opacity">Opacity</label>
                 <input type="range" id="opacity" name="opacity" min="1" max="100">
             </div>
@@ -43,4 +52,10 @@
             <input type="submit" value="Plot" class="btn btn-primary">
         </div>
     </form>
+
+    <script>
+        $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip();   
+        });
+    </script>
 {% endblock %}
