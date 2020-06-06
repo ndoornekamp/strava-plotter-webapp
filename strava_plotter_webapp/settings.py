@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'p$d*2!rp6)lnc6^7_4^qsy8+ig8i&ep0mp+eqgchswqk6a^y_7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['nickdoornekamp.pythonanywhere.com']
 
 
 # Application definition
@@ -118,3 +118,12 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = "/media/"
 MEDIA_PATH = "media"
+
+# local_settings.py can be used to overwrite any of the settings in this file (setting.py)
+# For example: this file (settings.py) is used in production, so we want to set DEBUG = False
+# For local development however, we usually want DEBUG = True
+try:
+    from .local_settings import *
+    print("Using settings from local_settings.py")
+except ImportError:
+    print("No local settings file found - using settings for production")
