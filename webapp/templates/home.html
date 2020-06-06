@@ -4,11 +4,16 @@
 {% load static %}
 
 {% block content %}
-    <br>
-    Welcome! To get your Strava data to the app, click the button below. 
-    <br><br>            
+    <p style="font-size:16px; margin:30px">
+        Welcome! To get your Strava data to the app, click the button below.
+    </p>
+
     <button id="button" class="btn btn-primary">Authorize</button>
-    <br><br>
+
+    <p style="font-size:11px; margin:30px">
+        Note: depending on the number of activities you have on Strava and how much they are spread out geographically <br>
+        downloading your data and plotting the activities can take up to a few minutes
+    </p>
 
     <script>
         const LOCAL_DOMAINS = ["localhost", "127.0.0.1"];
