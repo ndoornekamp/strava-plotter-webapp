@@ -4,4 +4,3 @@ media/
 strava-plotter/
 *.pyc
 strava_plotter_webapp/local_settings.py
-static/

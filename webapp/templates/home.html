@@ -1,26 +1,20 @@
 {% extends "base.html" %}
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 {% load static %}
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
 {% block content %}
-    <p style="font-size:16px; margin:30px">
-        Welcome! To get your Strava data to the app, click the button below.
-    </p>
+	<p class="text">
+		Welcome! To get your Strava data to the app, click the button below.
+	</p>
 
-    <button id="button" class="btn btn-primary">Authorize</button>
+	<button id="authorize-button" class="btn btn-primary">Authorize</button>
 
-    <p style="font-size:11px; margin:30px">
-        Note: depending on the number of activities you have on Strava and how much they are spread out geographically <br>
-        downloading your data and plotting the activities can take up to a few minutes
-    </p>
+	<p class="text disclaimer">
+		Note: depending on the number of activities you have on Strava and how much they are spread out geographically <br>
+		downloading your data and plotting the activities can take up to a few minutes
+	</p>
 
-    <script>
-        const LOCAL_DOMAINS = ["localhost", "127.0.0.1"];
-        if (LOCAL_DOMAINS.includes(window.location.hostname)) {
-            document.getElementById("button").setAttribute("onclick", "location.href = 'https://www.strava.com/oauth/authorize?client_id=36057&redirect_uri=http://127.0.0.1:8000/exchange_code&response_type=code&approval_prompt=auto&scope=activity:read;'")
-        } else {
-            document.getElementById("button").setAttribute("onclick", "location.href = 'https://www.strava.com/oauth/authorize?client_id=36057&redirect_uri=http://nickdoornekamp.pythonanywhere.com/exchange_code&response_type=code&approval_prompt=auto&scope=activity:read;'")
-        }
-    </script>
+	<script src="{% static 'webapp/setButtonURL.js' %}" type="text/javascript"></script>
+
 {% endblock %}

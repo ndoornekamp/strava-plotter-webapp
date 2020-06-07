@@ -1,0 +1,10 @@
+.result-div {
+	display:grid;
+	margin:2%;
+}
+
+.result-image {
+	max-width:65%; 
+	margin:auto;
+}
+

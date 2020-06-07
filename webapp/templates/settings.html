@@ -1,13 +1,16 @@
 {% extends "base.html" %}
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 {% load static %}
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 {% block content %}
+    <link rel="stylesheet" href="{% static 'webapp/settings.css' %}" type="text/css" />
+
     <form action="{% url 'result' %}">
-        <div style="display:inline-block; width:45%; margin:2%;"> 
+        <div class="settings-block"> 
             <img src="{% static 'webapp/tooltip.png' %}" height="15px" data-toggle="tooltip" title="Check the activity types that you wish to include in the plots">
             Activity types:<br>
             {% for activity_type, amount in types.items %}
@@ -18,7 +21,7 @@
             {% endfor %}
             </div>
         
-        <div style="display:inline-block; width:45%; margin:2%;">
+        <div class="settings-block">
             <div>
                 <img src="{% static 'webapp/tooltip.png' %}" height="15px" data-toggle="tooltip" title="When checked, the algorithm will try to identify clusters of rides that are close to eachother and plot them in separate images">
                 <label for="clustered">Cluster rides</label>
