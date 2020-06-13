@@ -3,15 +3,16 @@
 
 {% block content %}
 	<p class="text">
-		Welcome! To get your Strava data to the app, click the button below.
+		Welcome! With this app, you can make images like the one below of your personal Strava data.
 	</p>
 
-	<button id="authorize-button" class="btn btn-primary">Authorize</button>
+	<img src="{% static 'webapp/example.png' %}">
 
-	<p class="text disclaimer">
-		Note: depending on the number of activities you have on Strava and how much they are spread out geographically <br>
-		downloading your data and plotting the activities can take up to a few minutes
+	<p class="text">
+		To get started, click the button below to authorize the app to download your data from Strava.
 	</p>
+
+	<button id="authorize-button" class="btn btn-primary" style="margin-bottom:30px">Connect to Strava</button>
 
 	<script src="{% static 'webapp/setButtonURL.js' %}" type="text/javascript"></script>
 
