@@ -18,11 +18,13 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
 
-from webapp.views import home, result, plotter_settings
+from webapp.views import home, loading_activities, plotter_settings, making_plots, result
 
 urlpatterns = [
     # url(r'^admin/', admin.site.urls),
-    url('exchange_code', plotter_settings),
+    url('exchange_code', loading_activities),
+    url('plotter_settings', plotter_settings, name='plotter_settings'),
+    url('making_plots', making_plots, name='making_plots'),
     url('result', result, name='result'),
     url('', home),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

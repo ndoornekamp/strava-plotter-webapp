@@ -15,8 +15,13 @@ def home(request):
     return render(request, 'home.html')
 
 
+def loading_activities(request):
+    request.session['auth_code'] = request.GET['code']
+    return render(request, 'loading_activities.html')
+
+
 def plotter_settings(request):
-    request.session['rides'] = get_rides_from_strava(authorisation_code=request.GET['code'])
+    request.session['rides'] = get_rides_from_strava(authorisation_code=request.session['auth_code'])
 
     types = Counter([ride['type'] for ride in request.session['rides']])
 
@@ -27,10 +32,15 @@ def plotter_settings(request):
     return render(request, 'settings.html', context=context)
 
 
+def making_plots(request):
+    request.session['params_from_form'] = dict(request.GET)
+    return render(request, 'making_plots.html')
+
+
 def result(request):
 
     params = {}
-    params_from_form = dict(request.GET)
+    params_from_form = request.session['params_from_form']
     
     # Hardcoded settings
     params["first_cluster_only"] = False

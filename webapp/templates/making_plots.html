@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <p class="text" style="margin-bottom:0">Making plots.. </p>
+
+    <img src="{% static 'webapp/bike.gif' %}" width="100px" height="100px" style="margin-bottom:30px"/>
+    
+    <script>
+        window.location.href = "{% url 'result' %}";
+    </script>
+
+{% endblock %}
