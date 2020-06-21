@@ -2,10 +2,10 @@
 {% load static %}
 
 {% block content %}
-    <p class="text" style="margin-bottom:0">Loading activities..</p>
+    <p class="text" style="margin-bottom:0">Loading activities.. This usually takes less than a minute</p>
 
     <img src="{% static 'webapp/bike.gif' %}" width="100px" height = "100px" style="margin-bottom:30px"/>
-    
+
     <script>
         window.location.href = "{% url 'plotter_settings' %}";
     </script>

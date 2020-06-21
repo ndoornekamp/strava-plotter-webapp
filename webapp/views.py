@@ -3,7 +3,6 @@ import sys
 sys.path.append('strava-plotter')  # Can't import from from modules with a '-'.. https://stackoverflow.com/questions/8350853/how-to-import-module-when-module-name-has-a-dash-or-hyphen-in-it
 
 from collections import Counter
-from PIL import Image
 
 from django.shortcuts import render
 from django.http import HttpResponse, FileResponse

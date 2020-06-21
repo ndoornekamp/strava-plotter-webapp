@@ -12,8 +12,12 @@
 		To get started, click the button below to authorize the app to download your data from Strava.
 	</p>
 
-	<button id="authorize-button" class="btn btn-primary" style="margin-bottom:30px">Connect to Strava</button>
+	<button id="authorize-button" class="btn btn-primary">Connect to Strava</button>
 
 	<script src="{% static 'webapp/setButtonURL.js' %}" type="text/javascript"></script>
+
+	<p class="disclaimer">
+		Currently, a maximum of two concurrent users can be served - requests from users beyond this number are queued.
+	</p>
 
 {% endblock %}
