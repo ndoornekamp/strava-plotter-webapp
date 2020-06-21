@@ -23,7 +23,6 @@ def plotter_settings(request):
     request.session['rides'] = get_rides_from_strava(authorisation_code=request.session['auth_code'])
 
     types = Counter([ride['type'] for ride in request.session['rides']])
-
     context = {
         "types": dict(types)
     }
@@ -37,7 +36,6 @@ def making_plots(request):
 
 
 def result(request):
-
     params = {}
     params_from_form = request.session['params_from_form']
     
@@ -53,7 +51,8 @@ def result(request):
     params["alpha"] = float(params_from_form.pop("opacity")[0])/100
     params["activity_types"] = [activity_type for activity_type in params_from_form if params_from_form[activity_type] == ['on']]      
 
-    print(params)
+    print(f'Total number of acitivities: {len(request.session["rides"])}')
+    print(f'Parameters used: {params}')
 
     rides = parse_rides(request.session['rides'], params)
     rides = cluster_rides(rides, params)
