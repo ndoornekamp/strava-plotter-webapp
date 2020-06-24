@@ -9,8 +9,8 @@
 
     <form action="{% url 'making_plots' %}">
         <div class="settings-block"> 
-            <img src="{% static 'webapp/tooltip.png' %}" height="15px" data-toggle="tooltip" title="Check the activity types that you wish to include in the plots">
-            Activity types:<br>
+            Activity types: <img src="{% static 'webapp/tooltip.png' %}" height="15px" data-toggle="tooltip" title="Check the activity types that you wish to include in the plots">
+            <br>
             {% for activity_type, amount in types.items %}
                 <div>
                     <label for="{{ activity_type }}">{{ activity_type }} ({{ amount }})</label>
@@ -21,13 +21,13 @@
         
         <div class="settings-block">
             <div>
-                <img src="{% static 'webapp/tooltip.png' %}" height="15px" data-toggle="tooltip" title="When checked, the algorithm will try to identify clusters of rides that are close to eachother and plot them in separate images">
                 <label for="clustered">Cluster rides</label>
+                <img src="{% static 'webapp/tooltip.png' %}" height="15px" data-toggle="tooltip" title="When checked, the algorithm will try to identify clusters of rides that are close to eachother and plot them in separate images">
                 <input type="checkbox" id="clustered" name="clustered" checked>
             </div>
             <div>
-                <img src="{% static 'webapp/tooltip.png' %}" height="15px" data-toggle="tooltip" title="Maximum distance between rides in degrees (latitude/longitude) above which rides are placed in separate clusters">
                 <label for="margin">Margin</label>
+                <img src="{% static 'webapp/tooltip.png' %}" height="15px" data-toggle="tooltip" title="Maximum distance between rides in degrees (latitude/longitude) above which rides are placed in separate clusters">
                 <select name="margin">
                     <option value="0">0</option>
                     <option value="0.05">0.05</option>
@@ -39,13 +39,13 @@
                 </select>
             </div>
             <div>
-                <img src="{% static 'webapp/tooltip.png' %}" height="15px" data-toggle="tooltip" title="Activity ID's you want to exclude. These ID's can be found by opening the activity you wish to exclude on strava.com - the URL then end in the ID of that activity.">
                 <label for="ids_to_skip">ID's to skip</label>
+                <img src="{% static 'webapp/tooltip.png' %}" height="15px" data-toggle="tooltip" title="Activity ID's you want to exclude. These ID's can be found by opening the activity you wish to exclude on strava.com - the URL then ends in the ID of that activity.">
                 <input type="text" id="ids_to_skip" name="ids_to_skip" value="621131153">
             </div>
-            <div>
-                <img src="{% static 'webapp/tooltip.png' %}" height="15px" data-toggle="tooltip" title="Opacity of the GPS tracks on top of the background image. When smaller than 100, overlapping tracks light up more than tracks you only traveled once.">
+            <div></div>
                 <label for="opacity">Opacity</label>
+                <img src="{% static 'webapp/tooltip.png' %}" height="15px" data-toggle="tooltip" title="Opacity of the GPS tracks on top of the background image. When less than 100%, overlapping tracks light up more than tracks you only traveled once.">
                 <input type="range" id="opacity" name="opacity" min="1" max="100">
             </div>
         </div>
