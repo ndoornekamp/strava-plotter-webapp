@@ -58,4 +58,6 @@ def result(request):
     rides = cluster_rides(rides, params)
     images_base64 = plot_rides(rides, params)
 
+    print(f"Results: {len(images_base64)} images")
+
     return render(request, 'result.html', {'images': images_base64})
