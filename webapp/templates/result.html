@@ -5,7 +5,7 @@
 	<link rel="stylesheet" href="{% static 'webapp/result.css' %}" type="text/css" />
 	<script src="{% static 'webapp/openInNewTab.js' %}" type="text/javascript"></script>
 
-	{% for image in images%}       
+	{% for image in images %}       
 		<div class="result-div">
 			<a href="#" onclick="open_in_new_tab(this)">
 				<img class="result-image" src="data:image/png;base64, {{ image }}"/>
@@ -13,4 +13,9 @@
 		</div>
 		
 	{% endfor %}
+	
+	<script>
+		console.log("Finished loading {{ images|length }} images")
+	</script>
+
 {% endblock %}
