@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-    <h3>There's been a problem..</h3>
+    <h3 style="margin-top:25px">There's been a problem..</h3>
     {% if error_code == 429 %}
         <p class="text">The Strava API allows a maximum of 600 requests every 15 minutes and 30000 every day per application. <br> That limit was exceed, so please try again later.</p>
     {% else %}
