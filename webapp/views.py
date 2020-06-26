@@ -23,8 +23,9 @@ def loading_activities(request):
 def plotter_settings(request):
     try:
         request.session['rides'] = get_rides_from_strava(authorisation_code=request.session['auth_code'])
-    except HTTPError:
-        return render(request, 'too_many_requests.html')
+    except HTTPError as http_error:
+        print(f"Failed to get to plotter_settings page. Error code: {http_error.code}")
+        return render(request, 'error.html', context={"error_code": http_error.code})
 
     types = Counter([ride['type'] for ride in request.session['rides']])
     context = {
