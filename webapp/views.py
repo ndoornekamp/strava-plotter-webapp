@@ -3,6 +3,7 @@ import sys
 sys.path.append('strava-plotter')  # Can't import from from modules with a '-'.. https://stackoverflow.com/questions/8350853/how-to-import-module-when-module-name-has-a-dash-or-hyphen-in-it
 
 from collections import Counter
+from urllib.error import HTTPError
 
 from django.shortcuts import render
 from django.http import HttpResponse, FileResponse
@@ -20,7 +21,10 @@ def loading_activities(request):
 
 
 def plotter_settings(request):
-    request.session['rides'] = get_rides_from_strava(authorisation_code=request.session['auth_code'])
+    try:
+        request.session['rides'] = get_rides_from_strava(authorisation_code=request.session['auth_code'])
+    except HTTPError:
+        return render(request, 'too_many_requests.html')
 
     types = Counter([ride['type'] for ride in request.session['rides']])
     context = {
