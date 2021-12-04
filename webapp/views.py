@@ -1,4 +1,8 @@
 import logging
+import sys
+# Can't import from from modules with a '-'.. https://stackoverflow.com/questions/8350853/how-to-import-module-when-module-name-has-a-dash-or-hyphen-in-it
+sys.path.append('strava-plotter')
+
 
 from collections import Counter
 from urllib.error import HTTPError
@@ -6,8 +10,8 @@ from urllib.error import HTTPError
 from django.shortcuts import render
 from django.http import HttpResponse, FileResponse
 
-from strava_plotter.strava_connection import get_rides_from_strava
-from strava_plotter.strava_plotter import parse_rides, cluster_rides, plot_rides
+from strava_connection import get_rides_from_strava
+from strava_plotter import parse_rides, cluster_rides, plot_rides
 
 logger = logging.getLogger(__name__)
 
