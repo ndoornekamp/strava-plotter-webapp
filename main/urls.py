@@ -1,4 +1,4 @@
-"""strava_plotter_webapp URL Configuration
+"""main URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
@@ -21,7 +21,6 @@ from django.contrib import admin
 from webapp.views import home, loading_activities, plotter_settings, making_plots, result
 
 urlpatterns = [
-    # url(r'^admin/', admin.site.urls),
     url('exchange_code', loading_activities),
     url('plotter_settings', plotter_settings, name='plotter_settings'),
     url('making_plots', making_plots, name='making_plots'),

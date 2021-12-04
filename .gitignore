@@ -1,6 +1,6 @@
 db.sqlite3
 .env
 media/
-strava-plotter/
 *.pyc
-strava_plotter_webapp/local_settings.py
+main/local_settings.py
+.vscode/

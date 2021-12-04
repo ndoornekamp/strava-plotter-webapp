@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{% static 'webapp/settings.css' %}" type="text/css" />
 
     <form action="{% url 'making_plots' %}">
-        <div class="settings-block"> 
+        <div class="settings-block">
             Activity types: <img src="{% static 'webapp/tooltip_blue.png' %}" height="15px" data-toggle="tooltip" title="Check the activity types that you wish to include in the plots">
             <br>
             {% for activity_type, amount in types.items %}
@@ -18,7 +18,7 @@
                 </div>
             {% endfor %}
             </div>
-        
+
         <div class="settings-block">
             <div>
                 <label for="clustered">Cluster rides</label>
@@ -48,6 +48,26 @@
                 <img src="{% static 'webapp/tooltip_blue.png' %}" height="15px" data-toggle="tooltip" title="Opacity of the GPS tracks on top of the background image. When less than 100%, overlapping tracks light up more than tracks you only traveled once.">
                 <input type="range" id="opacity" name="opacity" min="1" max="100">
             </div>
+            <div>
+                <label for="resolution">Background image resolution</label>
+                <img src="{% static 'webapp/tooltip_blue.png' %}" height="15px" data-toggle="tooltip"
+                    title="Resolution of the background satellite image. Higher resolutions take longer to process.">
+                <input type="range" id="resolution" name="resolution" min="8" max="12">
+            </div>
+            <div>
+                <label for="linewidth">Line width</label>
+                <img src="{% static 'webapp/tooltip_blue.png' %}" height="15px" data-toggle="tooltip"
+                    title="Width of the line used to draw routes on the image">
+                <select name="linewidth">
+                    <option value="0.5">0.1</option>
+                    <option value="0.2">0.2</option>
+                    <option value="0.3" selected>0.3</option>
+                    <option value="0.4">0.4</option>
+                    <option value="0.5">0.5</option>
+                    <option value="0.75">0.75</option>
+                    <option value="1">1</option>
+                </select>
+            </div>
         </div>
         <div>
             <input type="submit" value="Continue" class="btn btn-primary">
@@ -56,7 +76,7 @@
 
     <script>
         $(document).ready(function(){
-          $('[data-toggle="tooltip"]').tooltip();   
+          $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
 {% endblock %}
