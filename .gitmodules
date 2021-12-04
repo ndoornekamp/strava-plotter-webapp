@@ -1,0 +1,3 @@
+[submodule "strava-plotter-submodule"]
+	path = strava-plotter
+	url = https://github.com/ndoornekamp/strava-plotter
