@@ -50,9 +50,7 @@ def result(request):
     params_from_form = request.session['params_from_form']
 
     # Hardcoded settings
-    params["first_cluster_only"] = False
     params["output_format"] = "bytes"
-    params["subplots_in_separate_files"] = True
 
     # Settings from form
     params["clustered"] = params_from_form.pop("clustered", [""])[0] == "on"
