@@ -1,7 +1,8 @@
 This webapp uses https://github.com/ndoornekamp/strava-plotter to plot your personal Strava data with satellite images as background.
 
-# Local development
-
+# Running the app locally
 1. Clone the strava-plotter inside strava-plotter-webapp: `git clone https://github.com/ndoornekamp/strava-plotter-webapp.git`
-2. Create a conda env with the required dependencies by running `conda env create -f environment.yml`
-3. Start the Django server by running`python3 manage.py runserver`
+2. Follow section B of [Strava's instructions for creating an app](https://developers.strava.com/docs/getting-started/).
+3. Rename '.env.example' to '.env' and fill the CLIENT_ID, CLIENT_SECRET you obtained in the previous steps.
+4. Create a conda env with the required dependencies by running `conda env create -n strava-plotter-webapp -f environment.yml`
+5. Start the Django server by running`python3 manage.py runserver`
