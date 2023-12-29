@@ -1,5 +1,6 @@
 import logging
 import sys
+import time
 
 # Can't import from from modules with a '-'.. https://stackoverflow.com/questions/8350853/how-to-import-module-when-module-name-has-a-dash-or-hyphen-in-it
 sys.path.append("strava-plotter")
@@ -63,6 +64,7 @@ def result(request):
     params["resolution"] = int(params_from_form.pop("resolution")[0])
     params["linewidth"] = float(params_from_form.pop("linewidth")[0])
 
+    start = time.time()
     logger.info(f'Total number of acitivities: {len(request.session["rides"])}')
     logger.info(f"Parameters used: {params}")
 
@@ -70,6 +72,6 @@ def result(request):
     rides = cluster_rides(rides, params)
     images_base64 = plot_rides(rides, params)
 
-    logger.debug(f"Results: {len(images_base64)} images")
+    logger.info(f"Results: {len(images_base64)} images in {time.time() - start:.2f} seconds")
 
     return render(request, "result.html", {"images": images_base64})
